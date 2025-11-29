@@ -1,3 +1,4 @@
+// src/components/Teacher/pages/NaturopathyBooking.jsx
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Leaf, Calendar, User, Mail, Phone, Clock, MessageSquare, ArrowRight, CheckCircle, Sparkles, Heart } from 'lucide-react';
@@ -17,11 +18,10 @@ export default function NaturopathyBooking() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // MODIFICATION: Only keeping 'initial consultation'
   const programTypes = [
-    { value: 'consultation', label: 'Initial Consultation (90 min)', price: '$180' },
-    { value: 'detox', label: 'Detox Program (7 days)', price: '$850' },
-    { value: 'nutrition', label: 'Nutrition Plan (4 weeks)', price: '$600' },
-    { value: 'wellness', label: 'Complete Wellness Package', price: '$1200' }
+    { value: 'consultation', label: 'Initial Consultation (45 min)', price: '$180' },
+    // Removed: detox, nutrition, wellness programs
   ];
 
   const timeSlots = [
@@ -198,31 +198,20 @@ export default function NaturopathyBooking() {
                   </div>
                 </div>
 
-                {/* Program Type */}
-                <div className="mb-8">
-                  <label className="block text-sm font-semibold mb-3">Program Type *</label>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {programTypes.map((program) => (
-                      <label
-                        key={program.value}
-                        className={`relative flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                          formData.program === program.value
-                            ? 'border-teal-500 bg-teal-500/20'
-                            : 'border-white/20 bg-white/5 hover:border-teal-500/50'
-                        }`}
-                        onClick={() => handleInputChange({ target: { name: 'program', value: program.value } })}
-                      >
-                        <div className="flex-1">
-                          <div className="font-semibold text-sm">{program.label}</div>
-                          <div className="text-teal-400 font-bold mt-1">{program.price}</div>
-                        </div>
-                        {formData.program === program.value && (
-                          <CheckCircle className="w-6 h-6 text-teal-400 flex-shrink-0 ml-2" />
-                        )}
-                      </label>
-                    ))}
-                  </div>
-                </div>
+               {/* Program Type */}
+<div className="mb-8">
+  <label className="block text-sm font-semibold mb-3">Program Type *</label>
+
+  <div className="relative flex items-center justify-between p-4 rounded-xl border-2 border-teal-500 bg-teal-500/20 transition-all">
+    <div className="flex-1">
+      <div className="font-semibold text-sm">{programTypes[0].label}</div>
+      <div className="text-teal-400 font-bold mt-1">{programTypes[0].price}</div>
+    </div>
+
+    <CheckCircle className="w-6 h-6 text-teal-400 flex-shrink-0 ml-2" />
+  </div>
+</div>
+
 
                 {/* Date and Time */}
                 <div className="grid sm:grid-cols-2 gap-6 mb-8">

@@ -13,15 +13,13 @@ export default function HypnotherapyBooking() {
     message: ''
   });
 
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // UPDATED SESSION TYPES — only one left
   const sessionTypes = [
-    { value: 'initial', label: 'Initial Consultation (60 min)', price: '$150' },
-    { value: 'standard', label: 'Standard Session (60 min)', price: '$120' },
-    { value: 'extended', label: 'Extended Session (90 min)', price: '$180' },
-    { value: 'package', label: '5-Session Package', price: '$500' }
+    { value: 'initial', label: 'Initial Consultation (45 min)', price: '$150' }
   ];
 
   const timeSlots = [
@@ -199,32 +197,17 @@ export default function HypnotherapyBooking() {
                 </div>
 
                 {/* Session Type */}
-                <div className="mb-8">
+               <div className="mb-8">
                   <label className="block text-sm font-semibold mb-3">Session Type *</label>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {sessionTypes.map((session) => (
-                      <label
-                        key={session.value}
-                        className={`relative flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                          formData.session === session.value
-                            ? 'border-cyan-500 bg-cyan-500/20'
-                            : 'border-white/20 bg-white/5 hover:border-cyan-500/50'
-                        }`}
-                        onClick={() => handleInputChange({ target: { name: 'session', value: session.value } })}
-                      >
-                        <div className="flex-1">
-                          <div className="font-semibold text-sm">{session.label}</div>
-                          <div className="text-cyan-400 font-bold mt-1">{session.price}</div>
-                        </div>
-                        {formData.session === session.value && (
-                          <CheckCircle className="w-6 h-6 text-cyan-400 flex-shrink-0 ml-2" />
-                        )}
-                      </label>
-                    ))}
+                  <div className="relative flex items-center justify-between p-4 rounded-xl border-2 border-cyan-500 bg-cyan-500/20 transition-all">
+                    <div className="flex-1">
+                      <div className="font-semibold text-sm">{sessionTypes[0].label}</div>
+                      <div className="text-cyan-400 font-bold mt-1">{sessionTypes[0].price}</div>
+                    </div>
+                    <CheckCircle className="w-6 h-6 text-cyan-400 flex-shrink-0 ml-2" />
                   </div>
                 </div>
-
-                {/* Date and Time */}
+                {/* Date & Time */}
                 <div className="grid sm:grid-cols-2 gap-6 mb-8">
                   <div>
                     <label className="block text-sm font-semibold mb-2 flex items-center space-x-2">
@@ -379,6 +362,7 @@ export default function HypnotherapyBooking() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
