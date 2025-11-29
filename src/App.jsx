@@ -1,13 +1,22 @@
 
 import './App.css'
-import MedicalTourismLanding from './components/MedicalTourismLanding'
+import HypnotherapyBooking from './components/HypnotherapyBooking'
+import MedicalTourismLanding from './components/MedicalTourismLanding'  
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import NaturopathyBooking from './components/NaturopathyBooking'
 
 function App() {
  
 
   return (
     <>
-      <MedicalTourismLanding/>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MedicalTourismLanding/>} />
+        <Route path="/hypnotherapy-booking" element={<HypnotherapyBooking />} />
+        <Route path="/naturopathy-booking" element={<NaturopathyBooking />} />
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }

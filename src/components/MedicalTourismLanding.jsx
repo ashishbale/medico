@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import { Sparkles, Leaf, Brain, ArrowRight, CheckCircle, Globe, Users, Award, Heart, Shield, Star, Clock, MapPin, Phone, Mail, Zap, Target, Activity, Sun } from 'lucide-react';
 
 export default function MedicalTourismLanding() {
   const [scrollY, setScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState(null);
+ 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+
+  // New function to handle smooth scrolling to an element's ID
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Use smooth behavior for a better user experience
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const stats = [
     { number: "15K+", label: "Happy Patients" },
@@ -86,6 +98,8 @@ export default function MedicalTourismLanding() {
   ];
 
   return (
+          
+ 
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-cyan-900 to-teal-950 text-white overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -104,12 +118,12 @@ export default function MedicalTourismLanding() {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="hidden sm:block px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors">
-              About
-            </button>
-            <button className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105">
-              Get Started
-            </button>
+            
+            
+          <button 
+              onClick={() => scrollToSection('hypnotherapy-section')} // New handler
+              className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105"
+            >Get Started</button> 
           </div>
         </div>
       </nav>
@@ -193,8 +207,7 @@ export default function MedicalTourismLanding() {
       {/* Hypnotherapy Section */}
       <section 
         className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24"
-        onMouseEnter={() => setActiveSection('hypnotherapy')}
-        onMouseLeave={() => setActiveSection(null)}
+      id="hypnotherapy-section"
       >
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-xl rounded-3xl p-6 sm:p-8 md:p-12 border border-blue-500/30 shadow-2xl">
@@ -242,7 +255,7 @@ export default function MedicalTourismLanding() {
                   <span>One-on-one care</span>
                 </div>
               </div>
-              <button className="flex items-center space-x-2 px-8 py-4 text-sm sm:text-base bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 group">
+              <button onClick={() => navigate('/hypnotherapy-booking')} className="flex items-center space-x-2 px-8 py-4 text-sm sm:text-base bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 group">
                 <span>Explore Hypnotherapy</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -254,8 +267,7 @@ export default function MedicalTourismLanding() {
       {/* Naturopathy Section */}
       <section 
         className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24"
-        onMouseEnter={() => setActiveSection('naturopathy')}
-        onMouseLeave={() => setActiveSection(null)}
+      
       >
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-br from-emerald-500/20 to-teal-500/20 backdrop-blur-xl rounded-3xl p-6 sm:p-8 md:p-12 border border-emerald-500/30 shadow-2xl">
@@ -303,7 +315,7 @@ export default function MedicalTourismLanding() {
                   <span>100% Natural</span>
                 </div>
               </div>
-              <button className="flex items-center space-x-2 px-8 py-4 text-sm sm:text-base bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full font-semibold hover:shadow-lg hover:shadow-teal-500/50 transition-all duration-300 group">
+              <button onClick={() => navigate('/naturopathy-booking')} className="flex items-center space-x-2 px-8 py-4 text-sm sm:text-base bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full font-semibold hover:shadow-lg hover:shadow-teal-500/50 transition-all duration-300 group">
                 <span>Explore Naturopathy</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
