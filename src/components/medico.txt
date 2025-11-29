@@ -1,0 +1,190 @@
+import React, { useState, useEffect } from 'react';
+import { Sparkles, Leaf, Brain, ArrowRight, CheckCircle, Globe, Users, Award } from 'lucide-react';
+
+export default function MedicalTourismLanding() {
+  const [scrollY, setScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const features = [
+    { icon: Globe, text: "Global Network of Certified Practitioners" },
+    { icon: Users, text: "Personalized Treatment Plans" },
+    { icon: Award, text: "Award-Winning Care Standards" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute top-40 right-10 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="relative z-50 px-4 py-4 sm:px-6 sm:py-6 md:px-12">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400" />
+            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              HealJourney
+            </span>
+          </div>
+          <button className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-purple-500 to-pink-500 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105">
+            Get Started
+          </button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative z-10 px-6 pt-20 pb-32 md:px-12">
+        <div className="max-w-7xl mx-auto text-center">
+          <div 
+            className="transform transition-all duration-1000"
+            style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Transform Your Life Through
+              <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
+                Holistic Healing
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+              Discover world-class alternative medicine therapies tailored to your unique journey towards wellness
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 mb-16">
+              {features.map((feature, idx) => (
+                <div 
+                  key={idx}
+                  className="flex items-center space-x-2 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300"
+                >
+                  <feature.icon className="w-5 h-5 text-purple-400" />
+                  <span className="text-sm">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hypnotherapy Section */}
+      <section 
+        className="relative z-10 px-6 py-24 md:px-12"
+        onMouseEnter={() => setActiveSection('hypnotherapy')}
+        onMouseLeave={() => setActiveSection(null)}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div 
+              className={`transform transition-all duration-700 ${
+                activeSection === 'hypnotherapy' ? 'scale-105' : 'scale-100'
+              }`}
+            >
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-xl rounded-3xl p-12 border border-purple-500/30 shadow-2xl hover:shadow-purple-500/50 transition-all duration-500">
+                <Brain className="w-16 h-16 text-purple-400 mb-6" />
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Hypnotherapy</h2>
+                <p className="text-lg text-gray-300 mb-8">
+                  Unlock the power of your subconscious mind. Our certified hypnotherapists guide you through transformative sessions to overcome anxiety, break habits, and achieve deep relaxation.
+                </p>
+                <ul className="space-y-4 mb-8">
+                  {['Stress & Anxiety Relief', 'Sleep Improvement', 'Habit Transformation', 'Pain Management'].map((item, idx) => (
+                    <li key={idx} className="flex items-center space-x-3">
+                      <CheckCircle className="w-6 h-6 text-purple-400 flex-shrink-0" />
+                      <span className="text-gray-200">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 group">
+                  <span>Explore Hypnotherapy</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&h=600&fit=crop" 
+                alt="Hypnotherapy session"
+                className="relative rounded-3xl shadow-2xl w-full h-96 object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Naturopathy Section */}
+      <section 
+        className="relative z-10 px-6 py-24 md:px-12"
+        onMouseEnter={() => setActiveSection('naturopathy')}
+        onMouseLeave={() => setActiveSection(null)}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative order-2 md:order-1">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&h=600&fit=crop" 
+                alt="Naturopathy treatment"
+                className="relative rounded-3xl shadow-2xl w-full h-96 object-cover"
+              />
+            </div>
+            <div 
+              className={`order-1 md:order-2 transform transition-all duration-700 ${
+                activeSection === 'naturopathy' ? 'scale-105' : 'scale-100'
+              }`}
+            >
+              <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-xl rounded-3xl p-12 border border-green-500/30 shadow-2xl hover:shadow-green-500/50 transition-all duration-500">
+                <Leaf className="w-16 h-16 text-green-400 mb-6" />
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Naturopathy</h2>
+                <p className="text-lg text-gray-300 mb-8">
+                  Embrace nature's healing wisdom. Experience holistic treatments that work with your body's innate ability to heal, using natural therapies, nutrition, and lifestyle modifications.
+                </p>
+                <ul className="space-y-4 mb-8">
+                  {['Detoxification Programs', 'Herbal Medicine', 'Nutritional Counseling', 'Lifestyle Optimization'].map((item, idx) => (
+                    <li key={idx} className="flex items-center space-x-3">
+                      <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                      <span className="text-gray-200">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full font-semibold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300 group">
+                  <span>Explore Naturopathy</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative z-10 px-6 py-32 md:px-12">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-green-500/20 backdrop-blur-xl rounded-3xl p-12 border border-white/20 shadow-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Begin Your Healing Journey Today
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              Join thousands who have discovered the transformative power of holistic medicine
+            </p>
+            <button className="px-12 py-5 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105">
+              Schedule Your Consultation
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 px-6 py-12 md:px-12 border-t border-white/10">
+        <div className="max-w-7xl mx-auto text-center text-gray-400">
+          <p>&copy; 2024 HealJourney. Transform your wellness journey with us.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
