@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Brain, Calendar, User, Mail, Phone, Clock, MessageSquare, ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import doctor  from '../assets/doct.png'
 
 export default function HypnotherapyBooking() {
+
+  // ⭐ SCROLL TO TOP ON PAGE LOAD
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +24,6 @@ export default function HypnotherapyBooking() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // UPDATED SESSION TYPES — only one left
   const sessionTypes = [
     { value: 'initial', label: 'Initial Consultation (45 min)', price: '$150' }
   ];
@@ -39,30 +44,16 @@ export default function HypnotherapyBooking() {
   const validateForm = () => {
     const newErrors = {};
     
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
-    }
-    
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\+?[\d\s-()]+$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
-    }
-    
-    if (!formData.date) {
-      newErrors.date = 'Please select a date';
-    }
-    
-    if (!formData.time) {
-      newErrors.time = 'Please select a time slot';
-    }
-    
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Please enter a valid email';
+
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    else if (!/^\+?[\d\s-()]+$/.test(formData.phone)) newErrors.phone = 'Please enter a valid phone number';
+
+    if (!formData.date) newErrors.date = 'Please select a date';
+    if (!formData.time) newErrors.time = 'Please select a time slot';
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -82,7 +73,7 @@ export default function HypnotherapyBooking() {
         console.log('Appointment booked:', appointmentDetails);
         alert('Appointment details saved! Redirecting to payment...');
         setIsSubmitting(false);
-        
+
         setFormData({
           name: '',
           email: '',
@@ -100,6 +91,7 @@ export default function HypnotherapyBooking() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-cyan-900 to-teal-950 text-white">
+
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -115,59 +107,58 @@ export default function HypnotherapyBooking() {
               HAB
             </span>
           </div>
-          <button onClick={() => navigate('/')} className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-white/10 backdrop-blur-md border border-white/30 rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
+          <button
+            onClick={() => navigate('/')}
+            className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-white/10 backdrop-blur-md border border-white/30 rounded-full font-semibold hover:bg-white/20 transition-all duration-300"
+          >
             Back to Home
           </button>
         </div>
       </nav>
-      {/* Full-Width Doctor Information Section */}
-<div className="w-full bg-white/5 backdrop-blur-md border-b border-white/10 py-10 px-6 sm:px-12 text-white">
 
-  <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
+      {/* Doctor Section */}
+      <div className="w-full bg-white/5 backdrop-blur-md border-b border-white/10 py-10 px-6 sm:px-12 text-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
 
-    {/* Doctor Image */}
-    <div className="flex justify-center md:justify-start">
-      <img
-        src={doctor}
-        alt="Raj Agnani"
-        className="w-52 h-52 sm:w-64 sm:h-64 object-cover rounded-xl shadow-lg"
-      />
-    </div>
+          {/* Image */}
+          <div className="flex justify-center md:justify-start">
+            <img
+              src={doctor}
+              alt="Raj Agnani"
+              className="w-52 h-52 sm:w-64 sm:h-64 object-cover rounded-xl shadow-lg"
+            />
+          </div>
 
-    {/* Doctor Info */}
-    <div className="md:col-span-2 space-y-4">
+          {/* Info */}
+          <div className="md:col-span-2 space-y-4">
 
-      <h2 className="text-3xl font-bold">Raj Agnani</h2>
-      <p className="text-cyan-300 font-semibold text-lg">
-        Certified Clinical Hypnotherapist (CHT)
-      </p>
+            <h2 className="text-3xl font-bold">Raj Agnani</h2>
+            <p className="text-cyan-300 font-semibold text-lg">
+              Certified Clinical Hypnotherapist (CHT)
+            </p>
 
-      <p className="text-gray-300 text-sm leading-relaxed">
-        As a certified hypnotherapist, I help individuals overcome anxiety, stress,
-        fear and emotional challenges. With 17+ years of experience, I have guided
-        numerous clients toward positive change and unlocking their full potential.
-      </p>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              As a certified hypnotherapist, I help individuals overcome anxiety, stress,
+              fear and emotional challenges. With 17+ years of experience, I have guided
+              numerous clients toward positive change and unlocking their full potential.
+            </p>
 
-      {/* Qualifications */}
-      <div>
-        <h3 className="text-lg font-semibold text-cyan-300 mb-1">Qualifications</h3>
-        <ul className="text-gray-300 text-sm space-y-1">
-          <li>• Certified Clinical Hypnotherapist – CHII</li>
-          <li>• Certified Chakra Analyst</li>
-          <li>• Certified EFT Therapist</li>
-        </ul>
+            <div>
+              <h3 className="text-lg font-semibold text-cyan-300 mb-1">Qualifications</h3>
+              <ul className="text-gray-300 text-sm space-y-1">
+                <li>• Certified Clinical Hypnotherapist – CHII</li>
+                <li>• Certified Chakra Analyst</li>
+                <li>• Certified EFT Therapist</li>
+              </ul>
+            </div>
+
+            <p className="text-sm text-gray-400 pt-2">
+              Email: <span className="text-cyan-300">raj.agnani@hab.net.in</span>
+            </p>
+
+          </div>
+        </div>
       </div>
-
-
-      <p className="text-sm text-gray-400 pt-2">
-        Email: <span className="text-cyan-300">raj.agnani@hab.net.in</span>
-      </p>
-
-    </div>
-
-  </div>
-</div>
-
 
       {/* Main Content */}
       <div className="relative z-10 px-4 py-12 sm:px-6 md:px-12">
