@@ -113,7 +113,7 @@ export default function NaturopathyBooking() {
           <div className="flex items-center space-x-2">
             <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-teal-400" />
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-              HealJourney
+              HAB
             </span>
           </div>
           <button onClick={() => navigate('/')} className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-white/10 backdrop-blur-md border border-white/30 rounded-full font-semibold hover:bg-white/20 transition-all duration-300">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Brain, Calendar, User, Mail, Phone, Clock, MessageSquare, ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
+import doctor  from '../assets/doct.png'
 
 export default function HypnotherapyBooking() {
   const [formData, setFormData] = useState({
@@ -111,7 +112,7 @@ export default function HypnotherapyBooking() {
           <div className="flex items-center space-x-2">
             <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" />
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
-              HealJourney
+              HAB
             </span>
           </div>
           <button onClick={() => navigate('/')} className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-white/10 backdrop-blur-md border border-white/30 rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
@@ -119,6 +120,54 @@ export default function HypnotherapyBooking() {
           </button>
         </div>
       </nav>
+      {/* Full-Width Doctor Information Section */}
+<div className="w-full bg-white/5 backdrop-blur-md border-b border-white/10 py-10 px-6 sm:px-12 text-white">
+
+  <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 items-center">
+
+    {/* Doctor Image */}
+    <div className="flex justify-center md:justify-start">
+      <img
+        src={doctor}
+        alt="Raj Agnani"
+        className="w-52 h-52 sm:w-64 sm:h-64 object-cover rounded-xl shadow-lg"
+      />
+    </div>
+
+    {/* Doctor Info */}
+    <div className="md:col-span-2 space-y-4">
+
+      <h2 className="text-3xl font-bold">Raj Agnani</h2>
+      <p className="text-cyan-300 font-semibold text-lg">
+        Certified Clinical Hypnotherapist (CHT)
+      </p>
+
+      <p className="text-gray-300 text-sm leading-relaxed">
+        As a certified hypnotherapist, I help individuals overcome anxiety, stress,
+        fear and emotional challenges. With 17+ years of experience, I have guided
+        numerous clients toward positive change and unlocking their full potential.
+      </p>
+
+      {/* Qualifications */}
+      <div>
+        <h3 className="text-lg font-semibold text-cyan-300 mb-1">Qualifications</h3>
+        <ul className="text-gray-300 text-sm space-y-1">
+          <li>• Certified Clinical Hypnotherapist – CHII</li>
+          <li>• Certified Chakra Analyst</li>
+          <li>• Certified EFT Therapist</li>
+        </ul>
+      </div>
+
+
+      <p className="text-sm text-gray-400 pt-2">
+        Email: <span className="text-cyan-300">raj.agnani@hab.net.in</span>
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
 
       {/* Main Content */}
       <div className="relative z-10 px-4 py-12 sm:px-6 md:px-12">
@@ -367,5 +416,7 @@ export default function HypnotherapyBooking() {
         </div>
       </div>
     </div>
+
   );
 }
+

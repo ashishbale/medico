@@ -1,6 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Sparkles, Leaf, Brain, ArrowRight, CheckCircle, Globe, Users, Award, Heart, Shield, Star, Clock, MapPin, Phone, Mail, Zap, Target, Activity, Sun } from 'lucide-react';
+import {
+  Sparkles,
+  Leaf,
+  Brain,
+  ArrowRight,
+  CheckCircle,
+  Globe,
+  Users,
+  Award,
+  Heart,
+  Shield,
+  Star,
+  Clock,
+  MapPin,
+  Phone,
+  Mail,
+  Zap,
+  Target,
+  Activity,
+  Sun
+} from 'lucide-react';
 
 export default function MedicalTourismLanding() {
   const [scrollY, setScrollY] = useState(0);
@@ -17,79 +37,133 @@ export default function MedicalTourismLanding() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
- const navigate = useNavigate();
+
+  const navigate = useNavigate();
+
+  // Updated stats based on PDF
   const stats = [
-    { number: "15K+", label: "Happy Patients" },
-    { number: "98%", label: "Success Rate" },
-    { number: "25+", label: "Countries Served" },
-    { number: "50+", label: "Expert Practitioners" }
+    { number: "6+", label: "Hospitals (Mumbai & Navi Mumbai)" },
+    { number: "200+", label: "Beds across network" },
+    { number: "10+", label: "Specialist Care Services" },
+    { number: "Coming Soon", label: "Robotic Surgery Hospital & Medical College" }
   ];
 
-  const testimonials = [
-    {
-      name: "Sarah Mitchell",
-      location: "United Kingdom",
-      text: "The hypnotherapy sessions completely transformed my approach to stress management. I feel more in control than ever before.",
-      rating: 5,
-      therapy: "Hypnotherapy"
-    },
-    {
-      name: "David Chen",
-      location: "Singapore",
-      text: "After years of trying conventional medicine, naturopathy gave me the holistic healing I was searching for. Truly life-changing.",
-      rating: 5,
-      therapy: "Naturopathy"
-    },
-    {
-      name: "Maria Rodriguez",
-      location: "Spain",
-      text: "The combination of both therapies helped me overcome chronic pain and anxiety. The team's expertise is unmatched.",
-      rating: 5,
-      therapy: "Combined Treatment"
-    }
-  ];
-
-  const whyChooseUs = [
-    {
-      icon: Shield,
-      title: "Certified Excellence",
-      description: "All practitioners are internationally certified with years of proven experience"
-    },
-    {
-      icon: Heart,
-      title: "Personalized Care",
-      description: "Custom treatment plans designed specifically for your unique health journey"
-    },
-    {
-      icon: Globe,
-      title: "Global Standards",
-      description: "World-class facilities meeting international healthcare standards"
-    },
-    {
-      icon: Users,
-      title: "Holistic Approach",
-      description: "Treating the whole person - mind, body, and spirit in harmony"
-    }
-  ];
-
-  const hypnotherapyBenefits = [
+     const hypnotherapyBenefits = [
     { icon: Brain, title: "Mental Clarity", desc: "Clear mental blocks and enhance focus" },
     { icon: Heart, title: "Emotional Balance", desc: "Manage stress and anxiety effectively" },
     { icon: Zap, title: "Behavioral Change", desc: "Break unwanted habits permanently" },
     { icon: Target, title: "Goal Achievement", desc: "Unlock your full potential" }
   ];
 
-  const naturopathyBenefits = [
+    const naturopathyBenefits = [
     { icon: Leaf, title: "Natural Healing", desc: "Harness your body's innate healing power" },
     { icon: Activity, title: "Vitality Boost", desc: "Increase energy and overall wellness" },
     { icon: Sun, title: "Lifestyle Balance", desc: "Optimize nutrition and daily habits" },
     { icon: Heart, title: "Preventive Care", desc: "Build long-term health resilience" }
   ];
 
+
+  // Testimonials adapted to PDF themes (keeps same UI)
+  const testimonials = [
+    {
+      name: "Ravi Kumar",
+      location: "Maharashtra, India",
+      text: "HAB helped arrange my mother's admission and surgery in Mumbai when our local options were limited. Clear, compassionate support throughout.",
+      rating: 5,
+      therapy: "Patient Navigation"
+    },
+    {
+      name: "Emily Roberts",
+      location: "United Kingdom",
+      text: "As an international patient, HAB guided visa & travel, lodging and connected me to specialists — affordable and professional care in India.",
+      rating: 5,
+      therapy: "Medical Tourism Support"
+    },
+    {
+      name: "Aisha Khan",
+      location: "Uttar Pradesh, India",
+      text: "They arranged diagnostics, counselling and post-op follow-up — we never felt alone. The team took care of logistics and the emotional side too.",
+      rating: 5,
+      therapy: "End-to-End Support"
+    }
+  ];
+
+  // Why Choose Us replaced with HAB-focused points
+  const whyChooseUs = [
+    {
+      icon: Shield,
+      title: "Patient-Centric Process",
+      description: "Every step is designed for clarity, quality and ease-of-use — from appointment to recovery."
+    },
+    {
+      icon: Heart,
+      title: "Comprehensive Support",
+      description: "From first opinion to lodging, legal, travel and post-op counselling — end-to-end assistance."
+    },
+    {
+      icon: Globe,
+      title: "Cross-Border Assistance",
+      description: "Support across states, countries and continents with visa & travel help for foreign nationals."
+    },
+    {
+      icon: Users,
+      title: "Experienced On-Ground Team",
+      description: "Nurses, physicians, psychologists and navigators who combine expertise with human touch."
+    }
+  ];
+
+  // "How We Assist" replaces Hypnotherapy benefits (keeps UI)
+  
+
+  // HBOT conditions list from PDF
+  const hbotConditions = [
+    "Severe anemia",
+    "Brain abscess",
+    "Arterial gas embolism",
+    "Burns",
+    "Carbon monoxide poisoning",
+    "Crushing injury",
+    "Sudden deafness",
+    "Decompression sickness",
+    "Gangrene",
+    "Non-healing wounds (e.g., diabetic foot ulcer)",
+    "Radiation injury",
+    "Skin grafts/flaps at risk",
+    "Traumatic brain injury",
+    "Sudden painless vision loss"
+  ];
+
+  // Hospital network (from PDF)
+  const hospitalNetwork = [
+    { name: "Ghatkopar", detail: "2 hospitals — 30 beds each" },
+    { name: "Sion", detail: "1 hospital — 65 beds" },
+    { name: "Chembur", detail: "1 hospital — 40 beds" },
+    { name: "Kurla", detail: "1 hospital — 20 beds" },
+    { name: "Ghatkopar (Under Construction)", detail: "Upcoming — 50 beds" },
+    { name: "Kharghar", detail: "1 hospital — 35 beds" },
+    { name: "Kamothe", detail: "1 hospital — 49 beds" }
+  ];
+
+  // On-ground team from PDF
+  const onGroundTeam = [
+    { role: "Trained Nurses", count: 10 },
+    { role: "Patient Attendants", count: 2 },
+    { role: "General Physicians", count: 5 },
+    { role: "Psychologists", count: 2 },
+    { role: "Hypnotherapists", count: 3 },
+    { role: "Nutritionists", count: 5 },
+    { role: "Physiotherapists", count: 3 },
+    { role: "Yoga Trainers", count: 4 },
+    { role: "Pain & Palliative Physicians", count: 4 },
+    { role: "Ortho-Dentists", count: 2 },
+    { role: "Patient Navigators", count: 2 }
+  ];
+
+  // Features pills replaced with HAB features
   const features = [
-    { icon: Globe, text: "Global Network of Certified Practitioners" },
-    { icon: Users, text: "Personalized Treatment Plans" },
-    { icon: Award, text: "Award-Winning Care Standards" }
+    { icon: Globe, text: "Advanced Medical Navigation" },
+    { icon: Users, text: "Cross-Border Treatment Assistance" },
+    { icon: Award, text: "Patient-Centric Seamless Process" }
   ];
 
   return (
@@ -107,16 +181,16 @@ export default function MedicalTourismLanding() {
           <div className="flex items-center space-x-2">
             <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              HealJourney
+              HAB
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <button 
+            <button
               onClick={() => scrollToSection('hypnotherapy-section')}
               className="px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105"
             >
               Get Started
-            </button> 
+            </button>
           </div>
         </div>
       </nav>
@@ -124,22 +198,20 @@ export default function MedicalTourismLanding() {
       {/* Hero Section */}
       <section className="relative z-10 px-4 pt-12 pb-20 sm:px-6 sm:pt-16 sm:pb-24 md:px-12 md:pt-20 md:pb-32">
         <div className="max-w-7xl mx-auto text-center">
-          <div 
+          <div
             className="transform transition-all duration-1000"
             style={{ transform: `translateY(${scrollY * 0.1}px)` }}
           >
+            
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2 text-gray-900">
               Transform Your Life Through
               <span className="block bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-                Holistic Healing
+                 Hope Across Borders
               </span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
-              Discover world-class alternative medicine therapies tailored to your unique journey towards wellness
-            </p>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 px-4">
               {features.map((feature, idx) => (
-                <div 
+                <div
                   key={idx}
                   className="flex items-center space-x-2 bg-white/80 backdrop-blur-md px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all duration-300"
                 >
@@ -157,7 +229,7 @@ export default function MedicalTourismLanding() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {stats.map((stat, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center"
               >
@@ -175,14 +247,14 @@ export default function MedicalTourismLanding() {
       <section className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Why Choose HealJourney</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Why Choose HAB</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Experience the difference of truly personalized, world-class holistic healthcare
+              Seamless, transparent, patient-first support for advanced medical care.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {whyChooseUs.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105"
               >
@@ -196,7 +268,7 @@ export default function MedicalTourismLanding() {
           </div>
         </div>
       </section>
-
+      
       {/* Hypnotherapy Section */}
       <section 
         className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24"
@@ -257,7 +329,9 @@ export default function MedicalTourismLanding() {
         </div>
       </section>
 
-      {/* Naturopathy Section */}
+   
+
+{/* Naturopathy Section */}
       <section 
         className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24"
       >
@@ -322,12 +396,12 @@ export default function MedicalTourismLanding() {
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">What Our Patients Say</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Real stories from people who transformed their lives with us
+              Real stories from people who found care, support and clear guidance with HAB.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {testimonials.map((testimonial, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105"
               >
@@ -355,21 +429,21 @@ export default function MedicalTourismLanding() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24">
+      {/* Process Section (A Patient's Journey) */}
+      <section className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24" id="process-section">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Your Journey With Us</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">A Patient’s Journey to Recovery</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              A simple, seamless process designed around your comfort and healing
+              Clear steps, transparent processes and compassionate support at every stage.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { step: "01", title: "Consultation", desc: "Free initial consultation to understand your needs" },
-              { step: "02", title: "Assessment", desc: "Comprehensive health evaluation by our experts" },
-              { step: "03", title: "Treatment", desc: "Personalized therapy sessions tailored to you" },
-              { step: "04", title: "Follow-up", desc: "Ongoing support and progress monitoring" }
+              { step: "01", title: "First Consultation", desc: "Video conferencing first opinion to understand needs and next steps." },
+              { step: "02", title: "Assessment & Plan", desc: "Doctor confirmation for admission, diagnosis and surgical planning." },
+              { step: "03", title: "Travel & Admission", desc: "Transit, domestic travel, ambulance and hospital admission coordination." },
+              { step: "04", title: "Treatment & Follow-up", desc: "Hospitalisation, surgery, nursing support and continuous counselling." }
             ].map((item, idx) => (
               <div key={idx} className="relative">
                 <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-blue-100 hover:border-blue-300 text-center hover:transform hover:scale-105 hover:shadow-lg transition-all duration-300">
@@ -388,21 +462,107 @@ export default function MedicalTourismLanding() {
         </div>
       </section>
 
+      {/* Hyperbaric Oxygen Therapy Section (New) */}
+      <section className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24" id="hbot-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-br from-indigo-500/10 to-blue-500/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 md:p-12 border border-indigo-200 shadow-2xl">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Hyperbaric Oxygen Therapy (HBOT)</h2>
+              <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">
+                HBOT involves breathing pure oxygen in a pressurized environment to promote healing. HAB connects you to partner HBOT centres in Mumbai for advanced care.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-4 gap-6 mb-8">
+              <div className="bg-white/90 rounded-2xl p-6 border border-indigo-100 shadow-sm">
+                <h3 className="font-bold text-lg mb-2">What HBOT Is</h3>
+                <p className="text-sm text-gray-700">Treatment in a pressurized chamber where lungs gather more oxygen to fight infection and promote tissue repair.</p>
+              </div>
+              <div className="bg-white/90 rounded-2xl p-6 border border-indigo-100 shadow-sm">
+                <h3 className="font-bold text-lg mb-2">How It Helps</h3>
+                <p className="text-sm text-gray-700">Increases oxygen delivery, triggers growth factors and stem cells, and speeds recovery when used alongside standard care.</p>
+              </div>
+              <div className="bg-white/90 rounded-2xl p-6 border border-indigo-100 shadow-sm">
+                <h3 className="font-bold text-lg mb-2">Conditions Treated</h3>
+                <p className="text-sm text-gray-700">Includes burns, non-healing wounds, decompression sickness, carbon monoxide poisoning, radiotherapy injuries and more.</p>
+              </div>
+              <div className="bg-white/90 rounded-2xl p-6 border border-indigo-100 shadow-sm">
+                <h3 className="font-bold text-lg mb-2">Available Through HAB</h3>
+                <p className="text-sm text-gray-700">Offered via HAB partners at select HBOT centres in central Mumbai — coordinated as part of your care plan.</p>
+              </div>
+            </div>
+
+            <div className="bg-white/50 rounded-2xl p-6 border border-white/30">
+              <h3 className="text-xl font-bold mb-4">Some Conditions Where HBOT Helps</h3>
+              <div className="grid sm:grid-cols-2 gap-2">
+                {hbotConditions.map((c, i) => (
+                  <div key={i} className="text-sm text-gray-800 flex items-center">
+                    <CheckCircle className="w-4 h-4 text-indigo-600 mr-2" />
+                    <span>{c}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hospital Network Section (New) */}
+      <section className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24" id="network-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Our Network of Multispeciality Hospitals</h2>
+            <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">HAB works with a network of hospitals across Mumbai & Navi Mumbai to provide comprehensive care.</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {hospitalNetwork.map((h, idx) => (
+              <div key={idx} className="bg-white/90 rounded-2xl p-6 border border-blue-100 shadow-sm">
+                <h3 className="font-bold text-lg mb-2 text-gray-900">{h.name}</h3>
+                <p className="text-sm text-gray-700">{h.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* On-Ground Team Section (New) */}
+      <section className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24" id="team-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">On-Ground Team</h2>
+            <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">A multidisciplinary team to guide patients clinically and emotionally through every step.</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {onGroundTeam.map((member, idx) => (
+              <div key={idx} className="bg-white/90 rounded-2xl p-6 border border-blue-100 shadow-sm flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-gray-900">{member.role}</div>
+                  <div className="text-sm text-gray-600">{member.count} on-ground</div>
+                </div>
+                <div className="text-blue-600 font-bold text-xl">{member.count}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-32">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-r from-blue-100 via-cyan-50 to-blue-100 rounded-3xl p-8 sm:p-12 md:p-16 border border-blue-200 shadow-xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
-              Begin Your Healing Journey Today
+              Begin Your Treatment Journey with HAB
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-10">
-              Join thousands who have discovered the transformative power of holistic medicine. Your path to wellness starts here.
+              Connect for a free first opinion, travel and hospital coordination, and a compassionate recovery plan tailored to you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <button className="px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 text-white rounded-full font-bold text-base sm:text-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105">
-                Schedule Your Consultation
+              <button onClick={() => scrollToSection('hypnotherapy-section')} className="px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 text-white rounded-full font-bold text-base sm:text-lg hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105">
+                Schedule Your Free Consultation
               </button>
-              <button className="px-8 sm:px-12 py-4 sm:py-5 bg-white border-2 border-blue-300 text-blue-700 rounded-full font-bold text-base sm:text-lg hover:bg-blue-50 transition-all duration-300">
+              <button onClick={() => navigate('/brochure')} className="px-8 sm:px-12 py-4 sm:py-5 bg-white border-2 border-blue-300 text-blue-700 rounded-full font-bold text-base sm:text-lg hover:bg-blue-50 transition-all duration-300">
                 Download Brochure
               </button>
             </div>
@@ -413,7 +573,7 @@ export default function MedicalTourismLanding() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-blue-600" />
-                <span>hello@healjourney.com</span>
+                <span>hello@hopeacrossborders.org</span>
               </div>
             </div>
           </div>
@@ -427,24 +587,24 @@ export default function MedicalTourismLanding() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Sparkles className="w-6 h-6 text-blue-600" />
-                <span className="text-xl font-bold text-gray-900">HealJourney</span>
+                <span className="text-xl font-bold text-gray-900">HAB</span>
               </div>
-              <p className="text-sm text-gray-600">Transforming lives through holistic healing and natural wellness.</p>
+              <p className="text-sm text-gray-600">Hope Across Borders — Medical Assist Tourism by Infinite Ventures.</p>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-gray-900">Services</h4>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li className="hover:text-blue-600 cursor-pointer transition-colors">Hypnotherapy</li>
-                <li className="hover:text-blue-600 cursor-pointer transition-colors">Naturopathy</li>
-                <li className="hover:text-blue-600 cursor-pointer transition-colors">Consultation</li>
-                <li className="hover:text-blue-600 cursor-pointer transition-colors">Wellness Programs</li>
+                <li className="hover:text-blue-600 cursor-pointer transition-colors">Patient Navigation</li>
+                <li className="hover:text-blue-600 cursor-pointer transition-colors">Diagnostics & Second Opinion</li>
+                <li className="hover:text-blue-600 cursor-pointer transition-colors">Hospital & Surgery Coordination</li>
+                <li className="hover:text-blue-600 cursor-pointer transition-colors">HBOT & Specialized Care</li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-gray-900">Company</h4>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li className="hover:text-blue-600 cursor-pointer transition-colors">About Us</li>
-                <li className="hover:text-blue-600 cursor-pointer transition-colors">Our Team</li>
+                <li className="hover:text-blue-600 cursor-pointer transition-colors">About HAB</li>
+                <li className="hover:text-blue-600 cursor-pointer transition-colors">Our Network</li>
                 <li className="hover:text-blue-600 cursor-pointer transition-colors">Testimonials</li>
                 <li className="hover:text-blue-600 cursor-pointer transition-colors">Contact</li>
               </ul>
@@ -460,7 +620,7 @@ export default function MedicalTourismLanding() {
             </div>
           </div>
           <div className="text-center text-sm text-gray-500 pt-8 border-t border-blue-100">
-            <p>&copy; 2024 HealJourney. All rights reserved. Transform your wellness journey with us.</p>
+            <p>&copy; {new Date().getFullYear()} Hope Across Borders (Infinite Ventures). All rights reserved.</p>
           </div>
         </div>
       </footer>
